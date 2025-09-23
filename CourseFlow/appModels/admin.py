@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course, Topic
+from .models import Course, Topic, SubTopic
 
 
 class TopicInline(admin.StackedInline):
@@ -20,3 +20,23 @@ class CourseAdmin(admin.ModelAdmin):
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
     autocomplete_fields = ['course']
+
+    list_display = ['title', 'status']
+    list_display_links = ['title', 'status']
+    search_fields = ['title', 'description']
+    list_filter = ['status']
+
+    list_per_page = 20
+
+@admin.register(SubTopic)
+class SubTopicAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['topic']
+
+    list_display = ['title', 'status']
+    list_display_links = ['title', 'status']
+    search_fields = ['title', 'description']
+    list_filter = ['status']
+
+    list_per_page = 20
+
+
