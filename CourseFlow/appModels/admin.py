@@ -17,14 +17,19 @@ class CourseAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
+class SubTopicInline(admin.StackedInline):
+    model = SubTopic
+    extra = 0
+
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
+    inlines = [SubTopicInline]
     autocomplete_fields = ['course']
 
-    list_display = ['title', 'status']
-    list_display_links = ['title', 'status']
+    list_display = ['course', 'title', 'status']
+    list_display_links = ['course', 'title', 'status']
     search_fields = ['title', 'description']
-    list_filter = ['status']
+    list_filter = ['status', 'course']
 
     list_per_page = 20
 

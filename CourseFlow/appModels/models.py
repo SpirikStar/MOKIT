@@ -6,11 +6,11 @@ class Course(models.Model):
         verbose_name='Название'
     )
     description = models.TextField(
-        verbose_name='Описание', 
+        verbose_name='Описание',
         null=True, blank=True
     )
     status = models.BooleanField(
-        verbose_name='Статус', 
+        verbose_name='Статус',
         choices=[
             (True, 'Опубликован'),
             (False, 'Не опубликовано'),
@@ -18,12 +18,13 @@ class Course(models.Model):
         default=True
     )
     date_created = models.DateField(
-        verbose_name='Дата создания', 
+        verbose_name='Дата создания',
         auto_now_add=True
     )
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name = 'курс'
         verbose_name_plural = 'Курсы'
@@ -39,17 +40,20 @@ class Topic(models.Model):
         verbose_name='Название'
     )
     description = models.TextField(
-        verbose_name='Описание', 
+        verbose_name='Описание',
         null=True, blank=True
     )
     status = models.BooleanField(
-        verbose_name='Статус', 
+        verbose_name='Статус',
         choices=[
             (True, 'Опубликован'),
             (False, 'Не опубликовано'),
         ],
         default=True
     )
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         verbose_name = 'тему'
@@ -71,7 +75,7 @@ class SubTopic(models.Model):
         blank=True
     )
     status = models.BooleanField(
-        verbose_name='Статус', 
+        verbose_name='Статус',
         choices=[
             (True, 'Опубликован'),
             (False, 'Не опубликовано'),
@@ -81,7 +85,7 @@ class SubTopic(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name = 'подтему'
         verbose_name_plural = 'Подтемы'
