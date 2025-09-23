@@ -85,4 +85,5 @@ class SubTopic(models.Model):
     class Meta:
         verbose_name = 'подтему'
         verbose_name_plural = 'Подтемы'
-
+        # python manage.py makemigrations
+        # python manage.py migrate
