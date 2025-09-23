@@ -4,6 +4,7 @@ from .models import Course, Topic
 
 class TopicInline(admin.StackedInline):
     model = Topic
+    extra = 0
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):

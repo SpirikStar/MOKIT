@@ -13,7 +13,7 @@ class Course(models.Model):
         verbose_name='Статус', 
         choices=[
             (True, 'Опубликован'),
-            (False, 'Не опубликован'),
+            (False, 'Не опубликовано'),
         ],
         default=True
     )
@@ -46,7 +46,7 @@ class Topic(models.Model):
         verbose_name='Статус', 
         choices=[
             (True, 'Опубликован'),
-            (False, 'Не опубликован'),
+            (False, 'Не опубликовано'),
         ],
         default=True
     )
