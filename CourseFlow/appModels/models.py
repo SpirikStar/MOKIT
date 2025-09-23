@@ -54,3 +54,35 @@ class Topic(models.Model):
     class Meta:
         verbose_name = 'тему'
         verbose_name_plural = 'Темы'
+
+
+class SubTopic(models.Model):
+    topic = models.ForeignKey(
+        Topic,
+        on_delete=models.CASCADE,
+        verbose_name="Тема"
+    )
+    title = models.CharField(
+        verbose_name="Название"
+    )
+    description = models.TextField(
+        verbose_name="Описание",
+        null=True,
+        blank=True
+    )
+    status = models.BooleanField(
+        verbose_name='Статус', 
+        choices=[
+            (True, 'Опубликован'),
+            (False, 'Не опубликовано'),
+        ],
+        default=True
+    )
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'подтему'
+        verbose_name_plural = 'Подтемы'
+
