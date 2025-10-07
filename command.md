@@ -13,3 +13,6 @@ python manage.py migrate
 
 
 python manage.py runserver
+
+
+https://dclimber.gitlab.io/posts/django-templates/

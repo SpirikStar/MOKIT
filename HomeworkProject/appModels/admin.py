@@ -5,6 +5,8 @@ from . import models
 class UserGroupInline(admin.TabularInline):
     model = models.UserGroup
     extra = 0
+    autocomplete_fields = ('user',)
+
 
 class HomeworkInline(admin.StackedInline):
     model = models.Homework
