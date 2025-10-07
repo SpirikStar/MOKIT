@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Главная страница{% endblock %}
+{% block title %}
+  Главная страница
+{% endblock %}
 
 {% block content %}
-    <h1>Форма</h1>
+  <div class="container">
+    <form class="container__from">
+      <div class="container__from-row">
+        <label for="login">Введите логин:</label>
+        <input type="text" id="login" name="login" required />
+      </div>
+      <button class="container__from-button">Открыть</button>
+    </form>
+  </div>
 {% endblock %}
