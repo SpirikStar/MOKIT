@@ -41,6 +41,18 @@ class Homework(models.Model):
         null=True,
         blank=True
     )
+    status = models.BooleanField(
+        verbose_name="Статус публикации",
+        default=True
+    )
+    dtime_created = models.DateTimeField(
+        verbose_name="Дата и время создания",
+        auto_now_add=True
+    )
+    dtime_edit = models.DateTimeField(
+        verbose_name="Дата и время изменения",
+        auto_now=True
+    )
     group = models.ForeignKey(
         Group,
         on_delete=models.CASCADE,
