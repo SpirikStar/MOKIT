@@ -5,4 +5,6 @@ from appModels import models
 
 class HomeView(View):
     def get(self, request):
-        return render(request, 'home.html')
+        us_name = request.GET.get('login')
+        if not us_name:
+            return render(request, 'home.html')
