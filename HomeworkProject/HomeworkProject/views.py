@@ -8,3 +8,5 @@ class HomeView(View):
         us_name = request.GET.get('login')
         if not us_name:
             return render(request, 'home.html')
+        
+        return render(request, 'homework.html')
