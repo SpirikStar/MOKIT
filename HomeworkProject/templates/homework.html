@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
 
-
-{% block title %}Домашние задания{% endblock %}
+{% block title %}
+  Домашние задания
+{% endblock %}
 
 {% block content %}
-    <div class="cards">
-        <div class="card">
-            <div class="card__head">
-                <span>Повторить пройденный материал</span>
-                <button>↗</button>
-            </div>
-            <div class="card__content">
-                <p>Подробное описание домашнего задания</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card__head">
-                <span>Повторить пройденный материал</span>
-                <button>↗</button>
-            </div>
-            <div class="card__content">
-                <p>Подробное описание домашнего задания</p>
-            </div>
-        </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card__head">
+        <span>Повторить пройденный материал</span>
+        <button onclick="hiddenBlock(this)">↗</button>
+      </div>
+      <div class="card__content no-block">Подробное описание домашнего задания</div>
     </div>
+    <div class="card">
+      <div class="card__head">
+        <span>Повторить пройденный материал</span>
+        <button onclick="hiddenBlock(this)">↗</button>
+      </div>
+      <div class="card__content no-block">Подробное описание домашнего задания</div>
+    </div>
+  </div>
+
+  <script>
+    function hiddenBlock(button) {
+      button.target.textContent = button.target.textContent === '↗' ? '↘' : '↗'
+      button.parentNode.parentNode.querySelector('.card__content').classList.toggle('no-block')
+    }
+  </script>
 {% endblock %}
