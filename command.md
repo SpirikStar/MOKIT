@@ -45,3 +45,6 @@ STATICFILES_DIRS = [
 
 12. Создание приложения appRequest
 python manage.py startapp appRequest
+
+
+13. 
