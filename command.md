@@ -42,3 +42,6 @@ TEMPLATES = [
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+12. Создание приложения appRequest
+python manage.py startapp appRequest
