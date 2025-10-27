@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Регистрация</title>
+</head>
+
+<body>
+    <div class="auth">
+        <div class="auth__content">
+            <img src="./img/image.png" class="auth__content-logo">
+            <h1 class="auth__content-title">Регистрация</h1>
+            <form action="">
+                <div class="row__col">
+                    <div class="row">
+                        <label for="us_firstname">Имя <span>*</span></label>
+                        <input type="text" name="us_firstname" id="us_firstname">
+                    </div>
+                    <div class="row">
+                        <label for="us_lastname">Фамилия <span>*</span></label>
+                        <input type="text" name="us_lastname" id="us_lastname">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="us_middlename">Отчество (необязательно)</label>
+                    <input type="text" name="us_middlename" id="us_middlename">
+                </div>
+                <div class="row">
+                    <label for="us_phone">Номер телефона<span>*</span></label>
+                    <input type="text" name="us_phone" id="us_phone" required>
+                </div>
+                <div class="row">
+                    <label for="us_email">Электронная почта<span>*</span></label>
+                    <input type="email" name="us_email" id="us_email" required>
+                </div>
+                <div class="row">
+                    <label for="us_login">Придумайте логин<span>*</span></label>
+                    <input type="text" name="us_login" id="us_login" required>
+                </div>
+                <div class="row__col">
+                    <div class="row">
+                        <label for="us_password_one">Придумайте пароль <span>*</span></label>
+                        <input type="text" name="us_password_one" id="us_password_one">
+                    </div>
+                    <div class="row">
+                        <label for="us_password_two">Подтвердите пароль <span>*</span></label>
+                        <input type="text" name="us_password_two" id="us_password_two">
+                    </div>
+                </div>
+                <button>Зарегистрироваться</button>
+                <span>
+                    У меня есть аккаунт.
+                    <a href="">Войти</a>
+                </span>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
