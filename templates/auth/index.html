@@ -10,7 +10,8 @@
     <div class="auth__content">
       <img src="{% static 'img/logo.png' %}" class="auth__content-logo" />
       <h1 class="auth__content-title">Авторизация</h1>
-      <form action="">
+      <form method="POST">
+        {% csrf_token %}
         <div class="row">
           <label for="us_login">Логин</label>
           <input type="text" name="us_login" id="us_login" required />

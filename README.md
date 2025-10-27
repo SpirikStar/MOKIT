@@ -134,3 +134,15 @@ class AuthPage(View):
             return redirect('/')
         return render(request, 'auth/index.html')
 ```
+
+## 14. Настройка CSRF TOKEN для `<form></form>`
+
+Для всех форм, размещённых в HTML-файлах, обязательно нужно добавить шаблонный тег `{% csrf_token %}` внутри соответствующего тега.
+
+Пример: 
+```html
+<form method="POST">
+    {% csrf_token %}
+</form>
+```
+> **Важно**: без `{% csrf_token %}` Django не будет принимать данные с тега form (ошибка).
