@@ -215,3 +215,26 @@ def post(self, request):
   <input name="us_password" type="password">
   ```
 - Ошибки передаются через URL-параметр `?error=...` и могут отображаться на странице `/auth/`.
+
+## 16. Сообщение пользователю об ошибке в логине и паролю
+
+> Ранее:  мы прописали условия, которые возращают GET сообщение на страницу авторизации.
+
+```python
+# Если пользователь не найден
+if not user:
+   return redirect('/auth/?error=Неверный логин или пароль')
+
+# Если аккаунт деактивирован
+if not user.is_active:
+   return redirect('/auth/?error=Пользователь заблокирован')
+```
+16.1. Необходимо перейти в папку `templates/auth` и открыть файл `index.html`.
+
+16.2. Необходимо прописать условие, которое проверит, если в get-запросе есть ключ error, мы получим сообщение и выведем через тег <span>.
+
+```html
+{% if request.GET.error %}
+  <span style="color: var(--red-color)">{{request.GET.error}}</span>
+{% endif %}
+```

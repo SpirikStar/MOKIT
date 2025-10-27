@@ -20,6 +20,9 @@
           <label for="us_password">Пароль</label>
           <input type="password" name="us_password" id="us_password" required />
         </div>
+        {% if request.GET.error %}
+          <span style="color: var(--red-color)">{{request.GET.error}}</span>
+        {% endif %}
         <button>Войти</button>
         <span>
           У меня нет аккаунт.
