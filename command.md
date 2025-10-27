@@ -20,3 +20,6 @@ python manage.py startapp appModels
 7. Миграции
 python manage.py makemigrations
 python manage.py migrate
+
+8. Создание суперпользователя
+python manage.py createsuperuser
