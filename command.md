@@ -23,3 +23,6 @@ python manage.py migrate
 
 8. Создание суперпользователя
 python manage.py createsuperuser
+
+9. Запуск сервера
+python manage.py runserver
