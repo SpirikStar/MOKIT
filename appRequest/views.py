@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from appModels import models
 from django.views import View
+from django.shortcuts import render
 
 class PersonalAccountPage(View):
     def get(self, request):
