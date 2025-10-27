@@ -16,3 +16,7 @@ django-admin startproject cleaning .
 
 6. Создание приложения
 python manage.py startapp appModels
+
+7. Миграции
+python manage.py makemigrations
+python manage.py migrate
