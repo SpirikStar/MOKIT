@@ -1,63 +1,108 @@
-1. Создание виртуального окружения
+# Проект Cleaning — Инструкция по запуску
+
+## 1. Создание виртуального окружения
+```bash
 python -m venv .venv
+```
 
-2. Разрешить PowerShell
+## 2. Разрешение выполнения скриптов в PowerShell (только для Windows)
+Если вы используете PowerShell и получаете ошибку выполнения, выполните:
+```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-https://iqnix.link/venv
+```
+Подробнее: [https://iqnix.link/venv](https://iqnix.link/venv)
 
-3. Запустить виртуальное окружение
-.venv/Scripts/activate 
+## 3. Активация виртуального окружения
+```bash
+# Windows
+.venv\Scripts\activate
 
-4. Установить библиотеки
-pip install django 
+# macOS / Linux
+source .venv/bin/activate
+```
 
-5. Создание проекта
+## 4. Установка зависимостей
+```bash
+pip install django
+```
+
+## 5. Создание проекта Django
+```bash
 django-admin startproject cleaning .
+```
 
-6. Создание приложения
+## 6. Создание приложений
+```bash
 python manage.py startapp appModels
+python manage.py startapp appRequest
+```
 
-7. Миграции
+## 7. Применение миграций
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
-8. Создание суперпользователя
+## 8. Создание суперпользователя
+```bash
 python manage.py createsuperuser
+```
 
-9. Запуск сервера
+## 9. Запуск сервера разработки
+```bash
 python manage.py runserver
+```
 
-10. Регистрация папки templates
-Перейти в файл "settings.py"
-Обновить TEMPLATES. 
+## 10. Настройка шаблонов (`templates`)
+В файле `cleaning/settings.py` обновите раздел `TEMPLATES`:
+```python
 TEMPLATES = [
-    'DIRS': [
-        BASE_DIR / 'templates'
-    ],
+    {
+        # ... остальные настройки ...
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
+        # ...
+    },
 ]
+```
 
-11. Регистрация папки static.
-Перейти в файл "settings.py". 
-Создать STATICFILES_DIRS. 
+## 11. Настройка статических файлов (`static`)
+В том же файле `settings.py` добавьте:
+```python
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+```
 
-12. Создание приложения appRequest
-python manage.py startapp appRequest
+## 12. Настройка маршрутов страниц
 
+### 12.1 Представления (`views.py` в `appRequest`)
+Используйте классы на основе `View` из `django.views`:
+```python
+from django.views import View
+from django.shortcuts import render
 
-13. Регистрация страниц
-13.1 Перейти в views.py (находится в приложении appRequest)
-13.2 Импортируйте from django.views import View (чтобы работать с ООП)
-13.3 Создайте для каждой страницы свой класс. Каждый класс 
-имеет метод get(). Метод get() должен обязательно возращать 
-render(request, 'путь_к_файлу.html')
+class PersonalAccountPage(View):
+    def get(self, request):
+        return render(request, 'account/index.html')
 
-14. Регистрация маршрутов для страниц
-14.1 Перейдите в urls.py (находится в проекте cleaning)
-14.2 Каждому созданному классу задайте свой маршрут
-14.2.1 http://127.0.0.1:8000/ - Личный кабинет
-14.2.2 http://127.0.0.1:8000/auth/ - Авторизация
-14.2.3 http://127.0.0.1:8000/reg/ - Регистрация
-Важно: / -> обязательный символ после названия
+...
+```
+
+### 12.2 Маршруты (`urls.py` в проекте `cleaning`)
+Зарегистрируйте маршруты с обязательным слешем `/` в конце:
+```python
+from django.urls import path
+from appRequest import views
+
+urlpatterns = [
+    path('', views.PersonalAccountPage.as_view()),# http://127.0.0.1:8000/
+    path('auth/', views.AuthPage.as_view()), # http://127.0.0.1:8000/auth/
+    path('reg/', views.RegPage.as_view()), # http://127.0.0.1:8000/reg/
+]
+```
+
+> **Важно**: Все маршруты должны заканчиваться символом `/`, чтобы избежать редиректов и обеспечить согласованность URL.
+
+---
