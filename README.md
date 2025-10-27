@@ -106,3 +106,30 @@ urlpatterns = [
 > **Важно**: Все маршруты должны заканчиваться символом `/`, чтобы избежать редиректов и обеспечить согласованность URL.
 
 ---
+
+## 13. Настройка прав доступа к страницам
+Для обеспечения безопасности данных необходимо ограничить доступ к личному кабинету так, чтобы он был доступен только для авторизованных пользователей.
+`request.user.is_authenticated`: True — пользователь авторизован; False — пользователь не авторизован.
+
+`not`: противоположный результат.
+
+Метод `redirect` предназначен для перенаправления пользователя на другой адрес.
+
+```python 
+class PersonalAccountPage(View):
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('/auth/')
+        return render(request, 'account/index.html')
+```
+
+
+Для обеспечения безопасности данных необходимо ограничить доступ к авторизации так, чтобы он был доступен только для не авторизованных пользователей.
+
+```python 
+class AuthPage(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('/')
+        return render(request, 'auth/index.html')
+```
