@@ -26,3 +26,19 @@ python manage.py createsuperuser
 
 9. Запуск сервера
 python manage.py runserver
+
+10. Регистрация папки templates
+Перейти в файл "settings.py"
+Обновить TEMPLATES. 
+TEMPLATES = [
+    'DIRS': [
+        BASE_DIR / 'templates'
+    ],
+]
+
+11. Регистрация папки static.
+Перейти в файл "settings.py". 
+Создать STATICFILES_DIRS. 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
