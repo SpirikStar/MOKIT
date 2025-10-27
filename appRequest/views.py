@@ -16,4 +16,6 @@ class AuthPage(View):
 
 class RegPage(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('/')
         return render(request, 'reg/index.html')
