@@ -248,4 +248,4 @@ if not user.is_active:
 <script src="{% static 'js/scripts.js' %}" defer></script>
 ```
 
-> `defer` - атрибут, который ожидает загрузки страницы. После этого испольнится js `scripts.js`
+> `defer` - атрибут, который ожидает загрузки страницы. После этого испольнится файл `scripts.js`
