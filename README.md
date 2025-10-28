@@ -245,7 +245,7 @@ if not user.is_active:
 Подключите созданный файл в `templates/base.html` в теге `<head>`:
 
 ```html
-<script src="{% static '/js/scripts.js' %}" defer></script>
+<script src="{% static 'js/scripts.js' %}" defer></script>
 ```
 
 > `defer` - атрибут, который ожидает загрузки страницы. После этого испольнится js `scripts.js`
