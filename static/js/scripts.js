@@ -13,4 +13,3 @@ if (form_reg) {
         form_reg.submit();
     })
 }
-alert(1000);

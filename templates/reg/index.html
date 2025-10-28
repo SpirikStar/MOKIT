@@ -48,6 +48,9 @@
             <input type="password" name="us_password_two" id="us_password_two" />
           </div>
         </div>
+        {% if request.GET.error %}
+          <span style="color: var(--red-color)">{{request.GET.error}}</span>
+        {% endif %}
         <button>Зарегистрироваться</button>
         <span>
           У меня есть аккаунт.

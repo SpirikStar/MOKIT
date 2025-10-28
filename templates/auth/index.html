@@ -22,6 +22,8 @@
         </div>
         {% if request.GET.error %}
           <span style="color: var(--red-color)">{{request.GET.error}}</span>
+        {% elif request.GET.success %}
+          <span style="color: green;">{{request.GET.success}}</span>
         {% endif %}
         <button>Войти</button>
         <span>
