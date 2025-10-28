@@ -241,3 +241,11 @@ if not user.is_active:
 
 ## 17. Создание скриптов на JS
 Необходимо создать в папке `static` путь `static/js/scripts.js` 
+
+Подключите созданный файл в `templates/base.html` в теге `<head>`:
+
+```html
+<script src="{% static '/js/scripts.js' %}" defer></script>
+```
+
+> `defer` - атрибут, который ожидает загрузки страницы. После этого испольнится js `scripts.js`
