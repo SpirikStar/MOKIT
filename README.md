@@ -238,3 +238,6 @@ if not user.is_active:
   <span style="color: var(--red-color)">{{request.GET.error}}</span>
 {% endif %}
 ```
+
+## 17. Создание скриптов на JS
+Необходимо создать в папке `static` путь `static/js/scripts.js` 
