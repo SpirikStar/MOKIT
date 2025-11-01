@@ -3,6 +3,7 @@
     --base-color: #232323;
     --red-color: #FF4747;
 }
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -47,11 +48,12 @@ html {
     gap: 12px;
 }
 
-.auth__content form .row__col{
+.auth__content form .row__col {
     display: flex;
     flex-direction: row;
     gap: 12px;
 }
+
 .auth__content form .row {
     flex: 1;
     display: flex;
@@ -63,7 +65,8 @@ html {
     font-size: 14px;
     font-weight: 500;
 }
-.auth__content form .row label span{
+
+.auth__content form .row label span {
     color: var(--red-color);
 }
 
@@ -74,6 +77,7 @@ html {
     border-radius: 8px;
     border: 1px solid var(--primary-color);
 }
+
 .auth__content form button {
     margin-top: 4px;
     cursor: pointer;
@@ -84,23 +88,158 @@ html {
     border-radius: 8px;
     height: 32px;
 }
+
 .auth__content form span {
     text-align: center;
     font-size: 14px;
 }
+
 .auth__content form span a {
     color: var(--primary-color);
     text-decoration: none;
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
     body {
         padding: 24px;
     }
-    .auth__content{
+
+    .auth__content {
         width: 100%;
     }
-    .auth__content form .row__col{
+
+    .auth__content form .row__col {
         flex-direction: column;
     }
+
+    .header-logo {
+        display: none;
+    }
+}
+
+/* Личный кабинет */
+
+.header {
+    padding: 24px 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    background-color: white;
+}
+
+.container {
+    margin-top: 60px;
+    width: 100%;
+    padding: 0 60px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.container__head {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.container__head-button {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.container__history {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container__history-cols {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.container__history-cols span {
+    padding: 16px;
+    border-bottom: 1px solid var(--base-color);
+    font-weight: 500;
+    font-size: 16px;
+    text-wrap: nowrap;
+}
+
+.container__history-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container__history-rows .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.container__history-rows .row span {
+    font-size: 14px;
+    border: 1px solid var(--base-color);
+    border-radius: 8px;
+    padding: 12px;
+
+    text-wrap: nowrap;
+}
+
+.header-exit {
+    cursor: pointer;
+    color: #FF4747;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.orders {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.orders .row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.orders .row label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.orders .row input,
+select {
+    font-size: 14px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+}
+
+.orders button {
+    margin-top: 4px;
+    cursor: pointer;
+    color: white;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    height: 32px;
 }

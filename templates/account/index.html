@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Личный кабинет
+{% endblock %}
+
+{% block content %}
+  <header class="header">
+    <img src="{% static 'img/logo.svg' %}" class="header-logo" />
+    <a href="" class="header-exit">Выйти</a>
+  </header>
+  <div class="container">
+    <div class="container__head">
+      <h2 class="container__head-title">Все заявки</h2>
+      <a class="container__head-button" href="">Создать заявку</a>
+    </div>
+    <hr />
+    <div class="container__history">
+      <div class="container__history-cols">
+        <span>Вид услуги</span>
+        <span>Адрес</span>
+        <span>Тип оплаты</span>
+        <span>Дата и время</span>
+        <span>Статус</span>
+      </div>
+      <div class="container__history-rows">
+        <div class="row">
+          <span>общий клининг</span>
+          <span>ул. Калужская, д.7</span>
+          <span>наличными</span>
+          <span>2025-15-07 14:00</span>
+          <span>в работе</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
