@@ -2,30 +2,49 @@ from appModels import models
 from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from appModels.models import Order
+from appModels.models import Order, Service
 
 
-class FormAccountPage(View): # View - класс представления.
+class FormAccountPage(View):  # View - класс представления.
     def get(self, request):
         # Если пользователь не авторизован
-        if not request.user.is_authenticated: # request.user - текущий пользователь
+        if not request.user.is_authenticated:  # request.user - текущий пользователь
             return redirect('/auth/')
-        
+
         # Если пользователь является сотрудником
         if request.user.is_staff:
             return redirect('/admin/')
-        
-        return render(request, 'account/form.html')
+
+        # Все записи которые хранятся в БД - называются объектами
+        # .all() - метод для получения всех записей
+        services = Service.objects.all()
+        return render(request, 'account/form.html', {
+            'services': services
+        })
+
+    def post(self, request):
+        us_date = request.POST.get('us_date')
+        us_time = request.POST.get('us_time')
+        us_type_service = request.POST.get('us_type_service')
+
+        Order.objects.create(
+            user=request.user,
+            address=request.POST.get('us_address'),
+            dtime=f'{us_date} {us_time}',
+            service=Service.objects.get(title=us_type_service),
+            method_pay=request.POST.get('us_type_pay')
+        )
+        return redirect('/')
 
 
 class PersonalAccountPage(View):
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('/auth/')
-        
+
         if request.user.is_staff:
             return redirect('/admin/')
-        
+
         # Все записи которые хранятся в БД - называются объектами
         # .filter() - метод для фильтрации
         # user - колонка в Order
@@ -43,12 +62,13 @@ class PersonalAccountPage(View):
             'orders': orders
         })
 
+
 class AuthPage(View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('/')
         return render(request, 'auth/index.html')
-    
+
     def post(self, request):
         username = request.POST.get('us_login')
         password = request.POST.get('us_password')
@@ -56,15 +76,15 @@ class AuthPage(View):
         user = authenticate(request, username=username, password=password)
         if not user:
             return redirect('/auth/?error=Неверный логин или пароль')
-        
+
         if not user.is_active:
             return redirect('/auth/?error=Пользователь заблокирован')
-        
+
         login(request, user)
 
         if user.is_staff:
             return redirect('/admin/')
-        
+
         return redirect('/')
 
 
@@ -74,7 +94,7 @@ class RegPage(View):
         if request.user.is_authenticated:
             return redirect('/')
         return render(request, 'reg/index.html')
-    
+
     def post(self, request):
         us_login = request.POST.get('us_login')
 

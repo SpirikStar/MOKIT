@@ -28,10 +28,9 @@
       <div class="row">
         <label for="us_type_service">Вид услуги</label>
         <select name="us_type_service" id="us_type_service" required>
-          <option value="общий клининг">общий клининг</option>
-          <option value="генеральная уборка">генеральная уборка</option>
-          <option value="послестроительная уборка">послестроительная уборка</option>
-          <option value="химчистка ковров и мебели">химчистка ковров и мебели</option>
+          {% for service in services %}
+            <option value="{{service.title}}">Услуга: {{service.title}}</option>
+          {% endfor %}
         </select>
       </div>
       <div class="row">
