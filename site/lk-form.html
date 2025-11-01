@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Оставить заявку</title>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./img/logo.svg" class="header-logo">
+        <a href="" class="header-exit">Выйти</a>
+    </header>
+    <div class="container">
+        <form class="orders">
+            <div class="row">
+                <label for="us_address">Введите адрес</label>
+                <input type="text" name="us_address" id="us_address" required>
+            </div>
+            <div class="row">
+                <label for="us_date">Введите дату</label>
+                <input type="date" name="us_date" id="us_date" required>
+            </div>
+            <div class="row">
+                <label for="us_time">Введите время</label>
+                <input type="time" name="us_time" id="us_time" required>
+            </div>
+            <div class="row">
+                <label for="us_type_service">Вид услуги</label>
+                <select name="us_type_service" id="us_type_service" required>
+                    <option value="общий клининг">общий клининг</option>
+                    <option value="генеральная уборка">генеральная уборка</option>
+                    <option value="послестроительная уборка">послестроительная уборка</option>
+                    <option value="химчистка ковров и мебели">химчистка ковров и мебели</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="us_type_pay">Вид оплаты</label>
+                <select name="us_type_pay" id="us_type_pay" required>
+                    <option value="наличные">наличные</option>
+                    <option value="банковская карта">банковская карта</option>
+                </select>
+            </div>
+            <button>Оставить заявку</button>
+        </form>
+    </div>
+</body>
+
+</html>
