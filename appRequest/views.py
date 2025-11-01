@@ -2,12 +2,32 @@ from appModels import models
 from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from appModels.models import Order
 
 class PersonalAccountPage(View):
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('/auth/')
-        return render(request, 'account/index.html')
+        
+        if request.user.is_staff:
+            return redirect('/admin/')
+        
+        # Все записи которые хранятся в БД - называются объектами
+        # .filter() - метод для фильтрации
+        # user - колонка в Order
+        # request.user - текущий пользователь
+        # .order_by() - метод для сортировки
+        # .order_by('-dtime') - сортировка по дате от большего к меньшему
+        # .order_by('dtime') - сортировка по дате от меньшего к большему
+        # QuerySet - список объектов, которые мы получаем из БД
+        # .filter() => QuerySet[]
+        orders = Order.objects.filter(user=request.user).order_by('-dtime')
+
+        # render - функция для отображения шаблона
+        # render(request - объект запроса, 'account/index.html' - название шаблона, {'orders': orders} - контекст)
+        return render(request, 'account/index.html', {
+            'orders': orders
+        })
 
 class AuthPage(View):
     def get(self, request):
