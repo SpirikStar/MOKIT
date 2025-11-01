@@ -4,6 +4,20 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from appModels.models import Order
 
+
+class FormAccountPage(View): # View - класс представления.
+    def get(self, request):
+        # Если пользователь не авторизован
+        if not request.user.is_authenticated: # request.user - текущий пользователь
+            return redirect('/auth/')
+        
+        # Если пользователь является сотрудником
+        if request.user.is_staff:
+            return redirect('/admin/')
+        
+        return render(request, 'account/form.html')
+
+
 class PersonalAccountPage(View):
     def get(self, request):
         if not request.user.is_authenticated:

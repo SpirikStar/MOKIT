@@ -11,7 +11,8 @@
     <a href="" class="header-exit">Выйти</a>
   </header>
   <div class="container">
-    <form class="orders">
+    <form class="orders" method="POST">
+      {% csrf_token %}
       <div class="row">
         <label for="us_address">Введите адрес</label>
         <input type="text" name="us_address" id="us_address" required />
